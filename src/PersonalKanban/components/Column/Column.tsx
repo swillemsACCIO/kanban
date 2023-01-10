@@ -30,6 +30,7 @@ const useColumnHeaderStyles = makeStyles((theme) => ({
 type ColumnHeaderProps = {
   title: string;
   description?: string;
+  endDate?: string;
   onEdit?: any;
   onDelete?: any;
   showEditAction?: boolean;
@@ -40,6 +41,7 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = (props) => {
   const {
     title,
     description,
+    endDate,
     showEditAction,
     showDeleteAction,
     onEdit,

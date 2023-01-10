@@ -41,6 +41,8 @@ const ColumnForm: React.FC<ColumnFormProps> = (props) => {
         title: "",
         description: "",
         color: "",
+        //endDate: new Date().toDateString(),
+        endDate: new Date().toDateString(),
         wipEnabled: false,
         wipLimit: 0,
       },
@@ -100,7 +102,7 @@ const ColumnForm: React.FC<ColumnFormProps> = (props) => {
         <Grid item xs={12}>
           <TextField
             multiline
-            rows={3}
+            minRows={3}
             name="description"
             label={t("description")}
             value={values.description}

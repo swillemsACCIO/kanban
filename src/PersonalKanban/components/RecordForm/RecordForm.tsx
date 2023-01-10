@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import {
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
@@ -24,6 +32,7 @@ type RecordFormProps = {
 
 const RecordForm: React.FC<RecordFormProps> = (props) => {
   const { t } = useTranslation();
+  const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
   const {
     record,
@@ -31,14 +40,17 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
     formTitle = t("addRecord"),
     onSubmit,
     onCancel,
-  } = props;
+    } = props;
+  
 
-  const { values, errors, handleChange, handleSubmit } = useFormik({
-    initialValues: Object.assign(
+  const { values, errors, handleChange, handleSubmit, setFieldValue } = useFormik({
+    initialValues: 
+     Object.assign(
       {
         title: "",
         description: "",
         color: "",
+        endDate: new Date(),
       },
       record
     ),
@@ -54,6 +66,7 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
       return errors;
     },
   });
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -78,7 +91,7 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
         <Grid item xs={12}>
           <TextField
             multiline
-            rows={3}
+            minRows={3}
             name="description"
             label={t("description")}
             value={values.description}
@@ -87,6 +100,25 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
             disabled={disabled}
             onChange={handleChange}
           />
+        </Grid>        
+        <Grid item xs={12}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              autoOk
+              variant="inline"
+              inputVariant="outlined"
+              label={t("enddate")}
+              format="dd.MM.yyyy"
+              value={values.endDate}
+              InputAdornmentProps={{ position: "start" }}
+              name="enddate"
+              error={Boolean(errors.endDate)}
+              helperText={errors.endDate}
+              disabled={disabled}       
+              onChange={val => {
+                setFieldValue("endDate", val)}}
+            />
+          </MuiPickersUtilsProvider>
         </Grid>
         <Grid item xs={12}>
           <FormControl component="fieldset">

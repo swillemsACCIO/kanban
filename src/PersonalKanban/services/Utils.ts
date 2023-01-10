@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
-import { Column } from "PersonalKanban/types";
+import { Column, Record } from "PersonalKanban/types";
 
 export const getId = (): string => {
   return uuidv4();
@@ -16,6 +16,14 @@ export const reorder = (list: any[], startIndex: number, endIndex: number) => {
 
 export const getCreatedAt = () => {
   return `${moment().format("DD-MM-YYYY")} ${moment().format("h:mm:ss a")}`;
+};
+export const getEndDate = (records: Record[]) => {
+  let maxEndDate: Date = new Date(2000,1,1);
+  records.forEach(rec => {
+    let actDate = new Date(rec.endDate);
+    if (actDate>maxEndDate) maxEndDate= actDate;
+  });
+  return maxEndDate;
 };
 
 export const reorderCards = ({
@@ -60,7 +68,7 @@ export const reorderCards = ({
 };
 
 export const getInitialState = () => {
-  return [
+  let resArr =[
     {
       id: getId(),
       title: "Todo",
@@ -108,4 +116,9 @@ export const getInitialState = () => {
       createdAt: getCreatedAt(),
     },
   ];
+  // resArr.forEach(rec => {
+  //   rec.endDate=getEndDate(rec.records);
+  // });
+
+  return resArr
 };

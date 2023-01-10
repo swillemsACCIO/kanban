@@ -5,6 +5,7 @@ export type Record = {
   caption?: string;
   color?: string;
   createdAt?: string;
+  endDate: Date;
 };
 
 export type Column = {
@@ -17,4 +18,5 @@ export type Column = {
   wipLimit?: number;
   wipEnabled?: boolean;
   createdAt?: string;
+  endDate: Date;
 };

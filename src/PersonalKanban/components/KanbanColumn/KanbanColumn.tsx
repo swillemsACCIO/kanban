@@ -5,6 +5,7 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 import KanbanCard from "PersonalKanban/components/KanbanCard";
 import Column, { ColumnCardList } from "PersonalKanban/components/Column";
 import { Column as ColumnType } from "PersonalKanban/types";
+import { getId, reorder, reorderCards, getEndDate } from "PersonalKanban/services/Utils";
 
 type KanbanInnerColumnCardListProps = {
   column: ColumnType;
@@ -82,8 +83,10 @@ const KanbanColumn: React.FC<KanbanColumnProps> = (props) => {
   const _column = Object.assign({}, column, {
     caption: column.wipEnabled
       ? `${t("wipLimit")} :${column.wipLimit}`
-      : column.createdAt,
-  });
+      //: column.createdAt,
+      //: new Date(column.endDate)
+      : getEndDate(column.records!).toLocaleDateString(),
+    });
 
   return (
     <Draggable draggableId={column.id} index={index}>

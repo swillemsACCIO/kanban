@@ -14,6 +14,7 @@ Default.args = {
   record: {
     title: "Make Coffee",
     description: "Brew the beans",
+    endDate: new Date(2023,1,1),
   },
 };
 Default.parameters = {

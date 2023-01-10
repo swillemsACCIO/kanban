@@ -88,6 +88,7 @@ const KanbanBoardContainer: React.FC<KanbanBoardContainerProps> = (props) => {
         columns[columnIndex].title = column.title;
         columns[columnIndex].description = column.description;
         columns[columnIndex].color = column.color;
+        columns[columnIndex].endDate = column.endDate;
         columns[columnIndex].wipEnabled = column.wipEnabled;
         columns[columnIndex].wipLimit = column.wipLimit;
         return columns;
@@ -145,6 +146,7 @@ const KanbanBoardContainer: React.FC<KanbanBoardContainerProps> = (props) => {
             description: record.description,
             color: record.color,
             createdAt: getCreatedAt(),
+            endDate: record.endDate,
           },
           ...columns[columnIndex].records,
         ];
@@ -163,7 +165,8 @@ const KanbanBoardContainer: React.FC<KanbanBoardContainerProps> = (props) => {
         const _record = columns[columnIndex].records[recordIndex!];
         _record.title = record.title;
         _record.description = record.description;
-        _record.color = record.color;
+        _record.color = record.color;        
+        _record.endDate = record.endDate;
         return columns;
       });
     },

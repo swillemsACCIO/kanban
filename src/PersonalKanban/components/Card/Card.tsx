@@ -4,9 +4,10 @@ import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
 import { Record } from "PersonalKanban/types";
 import IconButton from "PersonalKanban/components/IconButton";
+
+
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -46,7 +47,7 @@ const Card: React.FC<CardProps> = (props) => {
     onEdit,
     ...rest
   } = props;
-  const { title, description, createdAt } = record;
+  const { title, description, createdAt, endDate } = record;
 
   const classes = useStyles();
 
@@ -84,7 +85,7 @@ const Card: React.FC<CardProps> = (props) => {
         {description}
       </Typography>
       <Typography component="p" variant="caption" noWrap>
-        {createdAt}
+        {new Date(endDate).toLocaleDateString()}
       </Typography>
     </Paper>
   );

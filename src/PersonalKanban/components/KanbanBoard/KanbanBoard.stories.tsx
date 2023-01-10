@@ -3,13 +3,15 @@ import faker from "faker";
 
 import KanbanBoard from "PersonalKanban/components/KanbanBoard";
 import { Column, Record } from "PersonalKanban/types";
-import { getId, reorder, reorderCards } from "PersonalKanban/services/Utils";
+import { getId, reorder, reorderCards, getEndDate } from "PersonalKanban/services/Utils";
+import { getImpliedNodeFormatForFile } from "typescript";
 
 const getCards = (count: number): Record[] => {
   return new Array(count).fill(0).map(() => ({
     id: getId(),
     title: faker.lorem.word(),
     description: faker.lorem.sentence(),
+    endDate: new Date(),
   }));
 };
 
@@ -18,16 +20,19 @@ const getColumns = (): Column[] => {
     {
       id: getId(),
       title: "Todo",
+      endDate: getEndDate(getCards(10)),
       records: getCards(10),
     },
     {
       id: getId(),
       title: "In-Progress",
+      endDate: getEndDate(getCards(10)),
       records: getCards(11),
     },
     {
       id: getId(),
       title: "Completed",
+      endDate: getEndDate(getCards(10)),
       records: getCards(12),
     },
   ];
