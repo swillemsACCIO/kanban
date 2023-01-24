@@ -1,7 +1,9 @@
 {
+  "addBoard": "Add Board",
   "addColumn": "Добавить столбец",
   "addRecord": "Добавить запись",
   "background": "Фоновый цвет",
+  "board": "Board",
   "clear": "Стереть",
   "clearBoard": "Стереть доску",
   "clearBoardConfirmation": "Вы хотите удалить все столбцы и записи?",
@@ -19,7 +21,7 @@
   "limitRequired": "Предел требуется, если он включен.",
   "noRecord": "Нет доступных записей.",
   "noColumn": "Нет доступных столбцов.",
-  "personalKanban": "Персональный Канбан",
+  "kanban": "INSPECT Kanban",
   "submit": "представить",
   "title": "заглавие",
   "titleRequired": "Требуется название",

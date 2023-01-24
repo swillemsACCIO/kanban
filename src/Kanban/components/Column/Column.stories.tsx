@@ -1,9 +1,9 @@
 import React from "react";
 
-import Column from "PersonalKanban/components/Column";
+import Column from "Kanban/components/Column";
 
 const stories = {
-  title: "PersonalKanban/Column",
+  title: "Kanban/Column",
   component: Column,
 };
 

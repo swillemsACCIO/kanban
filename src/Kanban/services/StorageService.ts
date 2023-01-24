@@ -1,7 +1,8 @@
-import { Column } from "PersonalKanban/types";
+import { Board, Column } from "Kanban/types";
 
 const DARK_MODE = "dark_mode";
 const COLUMNS = "columns";
+const BOARDS = "boards";
 
 export function getItem(key: string) {
   return JSON.parse(localStorage.getItem(key)!);
@@ -19,12 +20,20 @@ export function setDarkMode(value: boolean) {
   return setItem(DARK_MODE, value);
 }
 
-export function setColumns(value: Column[]) {
-  return setItem(COLUMNS, value);
+// export function setColumns(value: Column[]) {
+//   return setItem(COLUMNS, value);
+// }
+
+// export function getColumns() {
+//   return getItem(COLUMNS);
+// }
+
+export function setBoards(value: Board[]) {
+  return setItem(BOARDS, value);
 }
 
-export function getColumns() {
-  return getItem(COLUMNS);
+export function getBoards() {
+  return getItem(BOARDS);
 }
 
 const StorageService = {
@@ -32,8 +41,10 @@ const StorageService = {
   setItem,
   getDarkMode,
   setDarkMode,
-  getColumns,
-  setColumns,
+  // getColumns,
+  // setColumns,
+  getBoards,
+  setBoards,
 };
 
 export default StorageService;

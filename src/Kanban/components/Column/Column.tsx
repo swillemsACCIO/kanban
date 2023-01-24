@@ -11,14 +11,14 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Card from "PersonalKanban/components/Card";
-import IconButton from "PersonalKanban/components/IconButton";
-import ColumnForm from "PersonalKanban/components/ColumnForm";
-import RecordForm from "PersonalKanban/components/RecordForm";
-import { ColumnColor, DarkColumnColor } from "PersonalKanban/enums";
-import { Record, Column as ColumnType } from "PersonalKanban/types";
-import { useTheme } from "PersonalKanban/providers/ThemeProvider";
-import { useTranslation } from "PersonalKanban/providers/TranslationProvider";
+import Card from "Kanban/components/Card";
+import IconButton from "Kanban/components/IconButton";
+import ColumnForm from "Kanban/components/ColumnForm";
+import RecordForm from "Kanban/components/RecordForm";
+import { ColumnColor, DarkColumnColor } from "Kanban/enums";
+import { Record, Column as ColumnType } from "Kanban/types";
+import { useTheme } from "Kanban/providers/ThemeProvider";
+import { useTranslation } from "Kanban/providers/TranslationProvider";
 
 const useColumnHeaderStyles = makeStyles((theme) => ({
   divider: {

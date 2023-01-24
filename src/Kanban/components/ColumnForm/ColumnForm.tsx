@@ -11,10 +11,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
-import { Column } from "PersonalKanban/types";
-import { ColumnColor } from "PersonalKanban/enums/index";
-import Radio from "PersonalKanban/components/Radio";
-import { useTranslation } from "PersonalKanban/providers/TranslationProvider";
+import { Column } from "Kanban/types";
+import { ColumnColor } from "Kanban/enums/index";
+import Radio from "Kanban/components/Radio";
+import { useTranslation } from "Kanban/providers/TranslationProvider";
 
 type ColumnFormProps = {
   column?: Partial<Column>;

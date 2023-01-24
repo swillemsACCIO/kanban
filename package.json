@@ -1,5 +1,5 @@
 {
-  "name": "personal-kanban",
+  "name": "inspect-kanban",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,14 +16,17 @@
     "@types/react-beautiful-dnd": "^13.0.0",
     "@types/react-dom": "^16.9.8",
     "@types/uuid": "^8.3.0",
+    "axios": "^1.2.2",
     "date-fns": "^2.29.3",
     "formik": "^2.2.1",
     "gh-pages": "^3.1.0",
     "i18next": "^19.8.3",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.21",
+    "js-cookie": "^3.0.1",
     "moment": "^2.29.1",
     "react": "^17.0.1",
+    "react-axios": "^2.0.6",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.7.3",
@@ -60,7 +63,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ".",
+  "homepage": "https://api.inspect.de:4001/",
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@storybook/addon-actions": "^6.0.27",
@@ -71,6 +74,7 @@
     "@storybook/react": "^6.0.27",
     "@types/dateformat": "^5.0.0",
     "@types/faker": "^5.1.3",
+    "@types/js-cookie": "^3.0.2",
     "babel-loader": "^8.1.0",
     "faker": "^5.1.0",
     "react-is": "^17.0.1"

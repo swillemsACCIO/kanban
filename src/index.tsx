@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import PersonalKanban from "./PersonalKanban";
+import Kanban from "./Kanban";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
@@ -9,7 +9,7 @@ import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <PersonalKanban />
+    <Kanban />
   </React.StrictMode>,
   document.getElementById("root")
 );

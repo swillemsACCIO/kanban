@@ -1,5 +1,7 @@
 export type Record = {
   id: string;
+  column_id: string;
+  pos: number;
   title: string;
   description?: string;
   caption?: string;
@@ -10,6 +12,8 @@ export type Record = {
 
 export type Column = {
   id: string;
+  board_id: string;
+  pos: number;
   title: string;
   description?: string;
   caption?: string;
@@ -19,4 +23,19 @@ export type Column = {
   wipEnabled?: boolean;
   createdAt?: string;
   endDate: Date;
+};
+
+export type Board = {
+  id: string;
+  title: string;
+  description?: string;
+  caption?: string;
+  columns?: Column[];
+  createdAt?: string;
+};
+
+export type BoardData = {
+  BoardOwnerID: number;
+  BoardOwnerName: string;
+  boards?: Board[];
 };

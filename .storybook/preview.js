@@ -1,5 +1,5 @@
-import ThemeProvider from "../src/PersonalKanban/providers/ThemeProvider";
-import TranslationProvider from "../src/PersonalKanban/providers/TranslationProvider";
+import ThemeProvider from "../src/Kanban/providers/ThemeProvider";
+import TranslationProvider from "../src/Kanban/providers/TranslationProvider";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

@@ -1,9 +1,9 @@
 import React from "react";
 
-import IconButton from "PersonalKanban/components/IconButton";
+import IconButton from "Kanban/components/IconButton";
 
 const stories = {
-  title: "PersonalKanban/IconButton",
+  title: "Kanban/IconButton",
   component: IconButton,
 };
 

@@ -1,7 +1,9 @@
 {
+  "addBoard": "Add Board",
   "addColumn": "添加栏",
   "addRecord": "添加记录",
   "background": "背景颜色",
+  "board": "Board",
   "clear": "擦除",
   "clearBoard": "擦除板",
   "clearBoardConfirmation": "是否要删除所有列和记录？",
@@ -19,7 +21,7 @@
   "limitRequired": "启用时需要限制。",
   "noRecord": "没有可用的记录。",
   "noColumn": "没有可用的栏。",
-  "personalKanban": "个人看板",
+  "kanban": "个人看板",
   "submit": "提交",
   "title": "标题",
   "titleRequired": "标题为必填项",

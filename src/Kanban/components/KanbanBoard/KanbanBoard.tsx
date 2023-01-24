@@ -1,9 +1,9 @@
 import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-import Board from "PersonalKanban/components/Board";
-import KanbanColumn from "PersonalKanban/components/KanbanColumn";
-import { Column } from "PersonalKanban/types";
+import Board from "Kanban/components/Board";
+import KanbanColumn from "Kanban/components/KanbanColumn";
+import { Column } from "Kanban/types";
 
 type KanbanBoardProps = {
   columns: Column[];

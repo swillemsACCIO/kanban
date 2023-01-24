@@ -3,14 +3,14 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import i18next from "i18next";
 
-import cn from "PersonalKanban/assets/locales/cn/translations.json";
-import de from "PersonalKanban/assets/locales/de/translations.json";
-import en from "PersonalKanban/assets/locales/en/translations.json";
-import es from "PersonalKanban/assets/locales/es/translations.json";
-import fr from "PersonalKanban/assets/locales/fr/translations.json";
-import ind from "PersonalKanban/assets/locales/in/translations.json";
-import ru from "PersonalKanban/assets/locales/ru/translations.json";
-import jp from "PersonalKanban/assets/locales/jp/translations.json";
+import cn from "Kanban/assets/locales/cn/translations.json";
+import de from "Kanban/assets/locales/de/translations.json";
+import en from "Kanban/assets/locales/en/translations.json";
+import es from "Kanban/assets/locales/es/translations.json";
+import fr from "Kanban/assets/locales/fr/translations.json";
+import ind from "Kanban/assets/locales/in/translations.json";
+import ru from "Kanban/assets/locales/ru/translations.json";
+import jp from "Kanban/assets/locales/jp/translations.json";
 
 export { useTranslation } from "react-i18next";
 

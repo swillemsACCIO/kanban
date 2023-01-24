@@ -1,7 +1,9 @@
 {
+  "addBoard": "Add Board",
   "addColumn": "列を追加",
   "addRecord": "レコードを追加",
   "background": "背景色",
+  "board": "Board",
   "clear": "消去",
   "clearBoard": "ボードの消去",
   "clearBoardConfirmation": "すべての列とレコードを削除しますか？",
@@ -19,7 +21,7 @@
   "limitRequired": "有効にすると制限が必要になります。",
   "noRecord": "利用可能なレコードはありません。",
   "noColumn": "使用可能な列はありません。",
-  "personalKanban": "個人かんばん",
+  "kanban": "INSPECT Kanban",
   "submit": "参加する",
   "title": "題名",
   "titleRequired": "タイトルが必要です",

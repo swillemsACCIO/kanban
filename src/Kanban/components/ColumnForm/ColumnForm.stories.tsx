@@ -1,9 +1,9 @@
 import React from "react";
 
-import ColumnForm from "PersonalKanban/components/ColumnForm";
+import ColumnForm from "Kanban/components/ColumnForm";
 
 const stories = {
-  title: "PersonalKanban/ColumnForm",
+  title: "Kanban/ColumnForm",
   component: ColumnForm,
 };
 

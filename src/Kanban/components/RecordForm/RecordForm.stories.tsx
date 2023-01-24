@@ -1,9 +1,9 @@
 import React from "react";
 
-import RecordForm from "PersonalKanban/components/RecordForm";
+import RecordForm from "Kanban/components/RecordForm";
 
 const stories = {
-  title: "PersonalKanban/RecordForm",
+  title: "Kanban/RecordForm",
   component: RecordForm,
 };
 

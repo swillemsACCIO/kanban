@@ -1,58 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
-import {
-  DatePicker,
-  TimePicker,
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
-import { Record } from "Kanban/types";
-import { RecordColor } from "Kanban/enums";
+import { Board } from "Kanban/types";
+// import { ColumnColor } from "Kanban/enums/index";
 import Radio from "Kanban/components/Radio";
 import { useTranslation } from "Kanban/providers/TranslationProvider";
 
-type RecordFormProps = {
-  record?: Record;
+type BoardFormProps = {
+  board?: Partial<Board>;
   onSubmit: any;
-  onCancel?: any;
+  onCancel: any;
   disabled?: boolean;
   formTitle?: string;
 };
 
-const RecordForm: React.FC<RecordFormProps> = (props) => {
+
+const BoardForm: React.FC<BoardFormProps> = (props) => {
   const { t } = useTranslation();
-  const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
   const {
-    record,
+    board,
     disabled,
-    formTitle = t("addRecord"),
+    formTitle = t("addBoard"),
     onSubmit,
     onCancel,
-    } = props;
-  
+  } = props;
 
-  const { values, errors, handleChange, handleSubmit, setFieldValue } = useFormik({
-    initialValues: 
-     Object.assign(
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: Object.assign(
       {
         title: "",
         description: "",
-        color: "",
-        endDate: new Date(),
       },
-      record
+      board
     ),
     onSubmit: (values) => {
       onSubmit && onSubmit(values);
@@ -66,6 +56,7 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
       return errors;
     },
   });
+
 
 
   return (
@@ -100,49 +91,8 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
             disabled={disabled}
             onChange={handleChange}
           />
-        </Grid>        
-        <Grid item xs={12}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-              autoOk
-              variant="inline"
-              inputVariant="outlined"
-              label={t("enddate")}
-              format="dd.MM.yyyy"
-              value={values.endDate}
-              InputAdornmentProps={{ position: "start" }}
-              name="enddate"
-              error={Boolean(errors.endDate)}
-              helperText={errors.endDate}
-              disabled={disabled}       
-              onChange={val => {
-                setFieldValue("endDate", val)}}
-            />
-          </MuiPickersUtilsProvider>
         </Grid>
-        <Grid item xs={12}>
-          <FormControl component="fieldset">
-            <FormLabel component="legend">{t("background")}</FormLabel>
-            <RadioGroup
-              row
-              aria-label="background"
-              name="color"
-              value={values.color}
-              onChange={handleChange}
-            >
-              {Object.keys(RecordColor).map((key) => {
-                const colorKey = key as keyof typeof RecordColor;
-                return (
-                  <Radio
-                    key={colorKey}
-                    value={colorKey}
-                    color={RecordColor[colorKey]}
-                  />
-                );
-              })}
-            </RadioGroup>
-          </FormControl>
-        </Grid>
+ 
         <Grid item xs={12}>
           <Button variant="outlined" disabled={disabled} onClick={onCancel}>
             {t("cancel")}
@@ -162,4 +112,4 @@ const RecordForm: React.FC<RecordFormProps> = (props) => {
   );
 };
 
-export default RecordForm;
+export default BoardForm;

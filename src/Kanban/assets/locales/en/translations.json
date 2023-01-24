@@ -1,7 +1,9 @@
 {
+  "addBoard": "Add Board",
   "addColumn": "Add Column",
   "addRecord": "Add Record",
   "background": "Background",
+  "board": "Board",
   "clear": "Clear",
   "clearBoard": "Clear Board",
   "clearBoardConfirmation": "Do you want to remove all columns and records ?",
@@ -19,7 +21,7 @@
   "limitRequired": "Limit is required when enabled.",
   "noRecord": "No records available.",
   "noColumn": "No columns available.",
-  "personalKanban": "Personal Kanban",
+  "kanban": "INSPECT Kanban",
   "submit": "Submit",
   "title": "Title",
   "titleRequired": "Title is required",

@@ -3,17 +3,12 @@ import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import {OutlinedInput as MuiOutlinedInput, withStyles} from "@material-ui/core";
-import Select from "@material-ui/core/Select";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Divider from "@material-ui/core/Divider";
 import MuiToolbar from "@material-ui/core/Toolbar";
 import Menu from "@material-ui/core/Menu";
-
+import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
@@ -23,52 +18,9 @@ import { makeStyles, useTheme as useMuiTheme } from "@material-ui/core/styles";
 
 import { useTranslation } from "Kanban/providers/TranslationProvider";
 import ColumnForm from "Kanban/components/ColumnForm";
-import BoardForm from "Kanban/components/BoardForm";
 import IconButton from "Kanban/components/IconButton";
 import { Column } from "Kanban/types";
-import { Board } from "Kanban/types";
 import { useTheme } from "Kanban/providers/ThemeProvider";
-
-type AddBoardButtonProps = {
-  onSubmit: any;
-};
-
-const AddBoardButton: React.FC<AddBoardButtonProps> = (props) => {
-  const { onSubmit } = props;
-
-  const { t } = useTranslation();
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpenDialog = React.useCallback(() => {
-    setOpen(true);
-  }, []);
-
-  const handleCloseDialog = React.useCallback(() => {
-    setOpen(false);
-  }, []);
-
-  const handleSubmit = React.useCallback(
-    (board: Column) => {
-      onSubmit({ board });
-      handleCloseDialog();
-    },
-    [onSubmit, handleCloseDialog]
-  );
-
-  return (
-    <Box display="block">
-      <Button variant="outlined" color="secondary" onClick={handleOpenDialog} style={{ height: 30 }} >
-        {t("addBoard")}
-      </Button>
-      <Dialog onClose={handleCloseDialog} open={open}>
-        <DialogContent>
-          <BoardForm onSubmit={handleSubmit} onCancel={handleCloseDialog} />
-        </DialogContent>
-      </Dialog>
-    </Box>
-  );
-};
 
 type AddColumnButtonProps = {
   onSubmit: any;
@@ -99,9 +51,9 @@ const AddColumnButton: React.FC<AddColumnButtonProps> = (props) => {
 
   return (
     <Box display="block">
-      <Button variant="outlined" color="secondary" onClick={handleOpenDialog} style={{ height: 30 }} >
+      <IconButton icon="add" color="primary" onClick={handleOpenDialog}>
         {t("addColumn")}
-      </Button>
+      </IconButton>
       <Dialog onClose={handleCloseDialog} open={open}>
         <DialogContent>
           <ColumnForm onSubmit={handleSubmit} onCancel={handleCloseDialog} />
@@ -143,7 +95,7 @@ const ClearBoardButton: React.FC<ClearBoardButtonProps> = (props) => {
     <Box display="flex">
       <IconButton
         icon="delete"
-        color="secondary"
+        color="primary"
         disabled={disabled}
         onClick={handleOpenDialog}
       ></IconButton>
@@ -151,22 +103,22 @@ const ClearBoardButton: React.FC<ClearBoardButtonProps> = (props) => {
         <DialogContent>
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <Typography gutterBottom variant="h6"  color="secondary">
+              <Typography gutterBottom variant="h6">
                 {t("clearBoard")}
               </Typography>
               <Divider />
             </Grid>
             <Grid item xs={12}>
-              <Typography gutterBottom  color="secondary">
+              <Typography gutterBottom>
                 {t("clearBoardConfirmation")}
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Button variant="outlined" onClick={handleCloseDialog}  color="secondary">
+              <Button variant="outlined" onClick={handleCloseDialog}>
                 {t("cancel")}
               </Button>
               &nbsp;
-              <Button color="secondary" variant="contained" onClick={handleClear}>
+              <Button color="primary" variant="contained" onClick={handleClear}>
                 {t("clear")}
               </Button>
             </Grid>
@@ -203,7 +155,7 @@ const LanguageButton: React.FC<LanguageButtonProps> = (props) => {
         icon={"language"}
         aria-controls="language-menu"
         aria-haspopup="true"
-        color="secondary"
+        color="inherit"
         onClick={handleClick}
       />
       <Menu
@@ -228,15 +180,27 @@ const LanguageButton: React.FC<LanguageButtonProps> = (props) => {
 
 const DarkThemeButton: React.FC<{}> = () => {
   const { darkTheme, handleToggleDarkTheme } = useTheme();
+
   return (
     <IconButton
-      color="secondary"
+      color="inherit"
       icon={darkTheme ? "invertColors" : "invertColorsOff"}
       onClick={handleToggleDarkTheme}
     />
   );
 };
 
+const GitHubButton: React.FC<{}> = () => {
+  return (
+    <IconButton
+      color="inherit"
+      icon="gitHub"
+      component={Link}
+      href="https://github.com/nishantpainter/personal-kanban"
+      target="_blank"
+    />
+  );
+};
 
 const useInfoButtonStyles = makeStyles((theme) => ({
   paper: {
@@ -251,61 +215,96 @@ const useInfoButtonStyles = makeStyles((theme) => ({
   },
 }));
 
+const InfoButton: React.FC<{}> = () => {
+  const classes = useInfoButtonStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
 
-const useToolbarStyles =makeStyles(({ palette }) => ({
+  const openInfo = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const closeInfo = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  const id = open ? "info-popover" : undefined;
+
+  return (
+    <>
+      <IconButton icon="info" color="primary" onClick={openInfo} />
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={closeInfo}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        PaperProps={{ className: classes.paper }}
+      >
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Box marginTop={2} textAlign="center">
+              <img
+                src="https://stacks.rocks/site/templates/assets/images/stacks-logo-dark.svg"
+                height="30"
+                alt="Stacks"
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2">
+              <Link href="https://stacks.rocks/" target="_blank">
+                Stacks
+              </Link>
+              &nbsp;is a cross-platform all-in-one project management tool that
+              works on top of a local folder.
+              <br />
+              <br />
+              Get 20% off on your order by applying coupon{" "}
+              <strong>NISHANT20</strong>
+              <br />
+              <br />
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.buttonGridItem}>
+            <Button variant="contained" color="primary">
+              <Link
+                color="inherit"
+                href="https://stacks.rocks/store/?coupon=NISHANT20"
+                target="_blank"
+              >
+                Order Now
+              </Link>
+            </Button>
+          </Grid>
+        </Grid>
+      </Popover>
+    </>
+  );
+};
+const useToolbarStyles = makeStyles(() => ({
   paper: {
     padding: 0,
   },
-  select: {
-    '&:before': {
-        borderColor: palette.secondary.main,
-    },
-    '&:after': {
-        borderColor: palette.secondary.main,
-    },
-    '&:not(.Mui-disabled):hover::before': {
-        borderColor: palette.secondary.main,
-    },
-  },
-  icon: {
-      fill: palette.secondary.main,
-  },
-  root: {
-      color: palette.secondary.main,
-  },
-
 }));
-
-const OutlinedInput = withStyles((theme) => ({
-  notchedOutline: {
-    borderColor: theme.palette.secondary.main, //"#1a80bf !important",
-    borderWidth: "2px"
-  },
-}))(MuiOutlinedInput);
 
 type ToolbarProps = {
   clearButtonDisabled?: boolean;
   onNewColumn: any;
   onClearBoard: any;
-  onNewBoard: any;
-  setBoard_id: any;
-  //board_id: string;
-  boards: Board[];
 };
 
 const Toolbar: React.FC<ToolbarProps> = (props) => {
-  const { clearButtonDisabled, onNewColumn, onClearBoard, onNewBoard } = props;
+  const { clearButtonDisabled, onNewColumn, onClearBoard } = props;
 
-  // const handleBoardChange = (event: React.ChangeEvent<{ value: string }>) => {
-  //   setBoard_id(event.target.value);
-  // };
-  const handleBoardChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    console.log('handleBoardChange value: '+event.target.value);
-    props.setBoard_id(event.target.value as string);
-  };
-  // const handleBoardChange = (event: React.ChangeEvent<{ value: string }>, child: React.ReactNode) => {
-  //   setBoard_id(event.target.value);
-  // };
   const { t } = useTranslation();
 
   const classes = useToolbarStyles();
@@ -320,7 +319,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         <Box display="flex" alignItems="center">
           <IconButton
             icon="Kanban"
-            color="secondary"
+            color="primary"
             size="small"
             iconProps={{ fontSize: "large" }}
             disableRipple
@@ -328,55 +327,24 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             disableFocusRipple
           />
           &nbsp;
-          <Typography variant={isMobile ? "body1" : "h6"} color="secondary">
-            <b>{t("kanban")}</b>
+          <Typography variant={isMobile ? "body1" : "h6"}>
+            <b>{t("Kanban")}</b>
           </Typography>
-          &nbsp;
-    
         </Box>
-        <Box 
-          sx={{
-            display: "flex",
-            flexGrow:1,
-            alignItems:"center",
-            justifyContent: "center",
-            minWidth: 300,
-          }}
-        >
-         <Typography variant={isMobile ? "body1" : "h6"} color="secondary">
-            <b>{t("board")}</b>
-          </Typography>
-          &nbsp;          
-          &nbsp;
-          <Select native={true} onChange={handleBoardChange} defaultValue={props.boards[0].id}   
-              className={classes.select}
-              inputProps={{
-                  classes: {
-                      icon: classes.icon,
-                      root: classes.root,
-                  },
-              }}
-              input={<OutlinedInput />}
-              style={{ height: 30, borderColor:'#ddebf7', borderBlockColor:'#ddebf7'}} >
-              {
-                props.boards.map( (x) => 
-                  <option key={x.id} value={x.id}>{x.title}</option> )
-              }
-
-            </Select>
-        </Box>
-        <Box display="flex">  
+        <Box display="flex" flexGrow={1} />
+        <Box display="flex">
           <AddColumnButton onSubmit={onNewColumn} />
-          &nbsp;
-          <AddBoardButton onSubmit={onNewBoard} />
           &nbsp;
           <ClearBoardButton
             disabled={clearButtonDisabled}
             onClear={onClearBoard}
           />
           &nbsp;
+          <InfoButton />
+          &nbsp;
           <DarkThemeButton /> &nbsp;
           <LanguageButton /> &nbsp;
+          <GitHubButton />
         </Box>
       </MuiToolbar>
     </AppBar>
@@ -384,4 +352,3 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 };
 
 export default Toolbar;
-

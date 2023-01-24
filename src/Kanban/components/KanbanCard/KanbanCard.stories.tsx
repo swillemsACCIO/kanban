@@ -1,10 +1,10 @@
 import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-import KanbanCard from "PersonalKanban/components/KanbanCard";
+import KanbanCard from "Kanban/components/KanbanCard";
 
 const stories = {
-  title: "PersonalKanban/KanbanCard",
+  title: "Kanban/KanbanCard",
   component: KanbanCard,
 };
 

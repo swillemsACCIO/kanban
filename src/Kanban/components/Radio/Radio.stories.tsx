@@ -1,10 +1,10 @@
 import React from "react";
 
-import Radio from "PersonalKanban/components/Radio";
-import { RecordColor } from "PersonalKanban/enums";
+import Radio from "Kanban/components/Radio";
+import { RecordColor } from "Kanban/enums";
 
 const stories = {
-  title: "PersonalKanban/Radio",
+  title: "Kanban/Radio",
   component: Radio,
 };
 

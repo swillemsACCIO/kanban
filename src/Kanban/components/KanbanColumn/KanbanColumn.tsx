@@ -2,10 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 
-import KanbanCard from "PersonalKanban/components/KanbanCard";
-import Column, { ColumnCardList } from "PersonalKanban/components/Column";
-import { Column as ColumnType } from "PersonalKanban/types";
-import { getId, reorder, reorderCards, getEndDate } from "PersonalKanban/services/Utils";
+import KanbanCard from "Kanban/components/KanbanCard";
+import Column, { ColumnCardList } from "Kanban/components/Column";
+import { Column as ColumnType } from "Kanban/types";
+import { getId, reorder, reorderCards, getEndDate } from "Kanban/services/Utils";
 
 type KanbanInnerColumnCardListProps = {
   column: ColumnType;

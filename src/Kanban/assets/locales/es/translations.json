@@ -1,7 +1,9 @@
 {
+  "addBoard": "Add Board",
   "addColumn": "Añadir columna",
   "addRecord": "Agregar registro",
   "background": "Color de fondo",
+  "board": "Board",
   "clear": "Borrar",
   "clearBoard": "Borrar tablero",
   "clearBoardConfirmation": "Quiere eliminar todas las columnas y registros?",
@@ -19,7 +21,7 @@
   "limitRequired": "Se requiere límite cuando está habilitado.",
   "noRecord": "No hay registros disponibles.",
   "noColumn": "No hay columnas disponibles.",
-  "personalKanban": "Kanban Personal",
+  "kanban": "INSPECT Kanban",
   "submit": "Enviar",
   "title": "Título",
   "titleRequired": "Se requiere título",

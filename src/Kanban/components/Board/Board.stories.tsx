@@ -1,10 +1,10 @@
 import React from "react";
 import faker from "faker";
 
-import Board from "PersonalKanban/components/Board";
+import Board from "Kanban/components/Board";
 
 const stories = {
-  title: "PersonalKanban/Board",
+  title: "Kanban/Board",
   component: Board,
 };
 

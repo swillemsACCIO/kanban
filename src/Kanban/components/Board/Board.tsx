@@ -3,10 +3,10 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Column from "PersonalKanban/components/Column";
-import { useTranslation } from "PersonalKanban/providers/TranslationProvider";
-import { Column as ColumnType } from "PersonalKanban/types";
-import { COLUMN_WIDTH } from "PersonalKanban/constants";
+import Column from "Kanban/components/Column";
+import { useTranslation } from "Kanban/providers/TranslationProvider";
+import { Column as ColumnType } from "Kanban/types";
+import { COLUMN_WIDTH } from "Kanban/constants";
 
 const useBoardStyles = makeStyles((theme) => ({
   root: {

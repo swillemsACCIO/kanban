@@ -16,9 +16,11 @@ import {
   brown,
   blueGrey,
   lightGreen,
+  lightBlue,
+
 } from "@material-ui/core/colors";
 
-import StorageService from "PersonalKanban/services/StorageService";
+import StorageService from "Kanban/services/StorageService";
 
 declare module "@material-ui/core/styles/createTheme" {
   interface Theme {
@@ -52,10 +54,14 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   }, []);
 
   const theme: Theme = createTheme({
-    palette: {
-      primary: darkTheme ? lightGreen : brown,
-      secondary: blueGrey,
+    palette : {
+      primary: darkTheme ?  { main:'#ffffff' }: { main: '#000000'},
+      secondary: darkTheme ?  { main:'#ddebf7' }: { main: '#1a80bf'} ,
       type: darkTheme ? "dark" : "light",
+      text: {
+          primary:  darkTheme ? '#ffffff' : '#000000',
+          secondary: darkTheme ? '#ddebf7' : '#1a80bf',
+     },
     },
     overrides: {
       MuiPaper: {
@@ -91,6 +97,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
       },
       MuiRadio: {
         size: "small",
+      },      
+      MuiSelect: {
+        variant: "outlined",
       },
     },
     custom: {

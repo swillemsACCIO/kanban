@@ -1,9 +1,9 @@
 import React from "react";
 
-import Card from "PersonalKanban/components/Card";
+import Card from "Kanban/components/Card";
 
 const stories = {
-  title: "PersonalKanban/Card",
+  title: "Kanban/Card",
   component: Card,
 };
 

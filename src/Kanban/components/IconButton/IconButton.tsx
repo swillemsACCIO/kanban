@@ -3,6 +3,7 @@ import MuiIconButton, {
   IconButtonProps as MuiIconButtonProps,
 } from "@material-ui/core/IconButton";
 
+
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
@@ -25,7 +26,7 @@ const icons = {
   invertColorsOff: InvertColorsOffIcon,
   gitHub: GitHubIcon,
   language: LanguageIcon,
-  personalKanban: DeveloperBoardIcon,
+  Kanban: DeveloperBoardIcon,
   info: InfoIcon,
 };
 
